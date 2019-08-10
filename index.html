@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Massenger</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="style/style.css" rel="stylesheet">
+    <style>
+        body {}
+
+        #messages {
+            list-style: none;
+        }
+
+        * {
+            user-select: none;
+        }
+
+        .chat {
+            width: 100%;
+            z-index: -5;
+
+        }
+
+        .chat tr td {
+            border-radius: 20px;
+            padding: 10px;
+            font-size: 12px;
+            line-height: 5px;
+            color: white;
+
+        }
+
+        .chat tr #me {
+            float: left;
+            background: rgba(0, 0, 255, 0.5);
+            height: auto;
+            max-width: 70%;
+        }
+
+        .chat tr #other {
+            float: right;
+            margin-right: 0%;
+            background: rgba(0, 255, 0, 0.5);
+        }
+
+        #textbox {
+            width: 80%;
+            outline: none;
+            color: rgba(128, 128, 128, 0.9);
+            background: rgba(128, 128, 128, 0.2);
+            background-repeat: no-repeat;
+        }
+
+        #send {
+            position: absolute;
+            width: 15%;
+            transform: translate(510%, -100%);
+            background: url('images/send.png');
+            transition: all 0.1s linear;
+            margin-left: 2%;
+
+        }
+
+        #send:hover {
+            background-position-x: center;
+            background-position-y: center;
+        }
+
+        #ta {
+            position: fixed;
+            bottom: 2.5%;
+            z-index: 5;
+
+        }
+
+        h1 {
+            position: fixed;
+            width: 100%;
+            z-index: 5;
+
+
+        }
+
+        h1 img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+
+        }
+    </style>
+    </script>
+    <script src="jquery.js"></script>
+    <script src="https://solid.github.io/solid-auth-client/dist/solid-auth-client.bundle.js"></script>
+    <script type="text/javascript">
+        function setParameters() {
+            document.getElementById('ta').style.width = window.innerWidth + 'px';
+
+        }
+
+        async function popupLogin() {
+            let session = await solid.auth.currentSession();
+            let popupUri = 'https://solid.community/common/popup.html';
+            if (!session)
+                session = await solid.auth.popupLogin({ popupUri });
+            console.log('Logged in as ' + session.webId);
+
+        }
+        popupLogin();
+    </script>
+</head>
+
+<body onload="setParameters()" onresize="setParameters()">
+    <h1 class="w3-black w3-container"><img src="images/user.png">&nbsp;&nbsp;David Bashir Kripal Singh</h1>
+    <br>
+    <br>
+    <button class="w3-btn w3-green" id="load">LOAD CHECK DATA</button>
+    <p id="view"></p>
+    <br>
+    <br>
+    <div class="w3-container">
+        <table class="chat" id="messages">
+            <tr>
+                <td colspan="2" id="me">
+                    <p>hi</p>
+                    <p>how are you?</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" id="other">
+                    <p>hi</p>
+                    <p>I am Fine?</p>
+                    <p>what about you?</p>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="w3-container texta" id="ta">
+        <input class="w3-input w3-round" placeholder="type your message" id="textbox" type="text">
+        <button class="w3-btn w3-round w3-blue" id="send">Send</button>
+    </div>
+
+    <script src='bundle.js'></script>
+</body>
+
+</html>

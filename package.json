@@ -1,0 +1,25 @@
+{
+  "name": "zauzbook",
+  "version": "1.0.0",
+  "description": "A social networking application based on SOLID architecture",
+  "main": "app.js",
+  "scripts": {
+    "build": "browserify app.js -o bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SECRET19/ZAUZ-BOOK.git"
+  },
+  "author": "ZAUZ ; A TEAM OF FOUNDATION UNIVERSITY",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SECRET19/ZAUZ-BOOK/issues"
+  },
+  "homepage": "https://github.com/SECRET19/ZAUZ-BOOK#readme",
+  "keywords": [],
+  "dependencies": {
+    "browserify": "^16.5.0",
+    "jquery": "^3.4.1",
+    "rdflib": "^0.21.1"
+  }
+}
